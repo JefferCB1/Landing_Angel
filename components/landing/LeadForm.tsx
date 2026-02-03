@@ -35,7 +35,10 @@ export default function LeadForm({ isOpen, onClose }: LeadFormProps) {
 
         try {
             // 1. Send to n8n Webhook
-            const response = await fetch("http://localhost:5678/webhook/dc987970-0c08-46ab-a7d9-c49ad97d7d21", {
+            const webhookUrl = process.env.NEXT_PUBLIC_N8N_WEBHOOK_URL;
+            if (!webhookUrl) throw new Error("Webhook URL not configured");
+
+            const response = await fetch(webhookUrl, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
