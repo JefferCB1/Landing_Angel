@@ -6,6 +6,8 @@ import Pillars from "@/components/landing/Pillars";
 import Testimonials from "@/components/landing/Testimonials";
 import { CTAFinal, Footer } from "@/components/landing/CTA";
 
+import TechTicker from "@/components/landing/TechTicker";
+
 export default function Home() {
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
@@ -45,6 +47,7 @@ export default function Home() {
             {/* Content with z-index to sit above spotlight but let light through if needed */}
             <div className="relative z-10">
                 <Hero />
+                <TechTicker />
                 <div id="pillars">
                     <Pillars />
                 </div>

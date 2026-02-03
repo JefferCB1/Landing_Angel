@@ -1,11 +1,15 @@
 "use client";
 import { motion, useMotionTemplate, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { ArrowRight, Sparkles, Users, Youtube, Instagram } from "lucide-react";
-
-
-import { MouseEvent } from "react";
+import DecryptedText from "@/components/ui/DecryptedText";
+import ProfileCard from "@/components/ui/ProfileCard";
+import LiquidButton from "@/components/ui/LiquidButton";
+import TallyModal from "@/components/ui/TallyModal";
+import CountUp from "@/components/ui/CountUp";
+import { MouseEvent, useState } from "react";
 
 export default function Hero() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
@@ -23,83 +27,158 @@ export default function Hero() {
 
     return (
         <section
-            className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 overflow-hidden group py-20"
+            className="relative min-h-screen flex flex-col items-center justify-center px-4 overflow-hidden group py-20"
             onMouseMove={handleMouseMove}
         >
             {/* Background Effect moved to global page.tsx */}
 
-            <div className="relative z-10 max-w-4xl mx-auto flex flex-col items-center">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8 }}
-                    className="flex items-center justify-center gap-2 mb-8"
-                >
-                    <span className="px-3 py-1 rounded-full border border-border bg-surface/50 text-xs font-medium text-secondary uppercase tracking-wider backdrop-blur-sm">
-                        Ángel Aparicio
-                    </span>
-                </motion.div>
+            <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
-                <motion.h1
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    style={{ x, y }}
-                    className="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-16"
-                >
-                    ¿Listo para <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8A00FF] via-[#a855f7] to-[#e879f9] glow-text-gradient">automatizar el 80%</span> de tu trabajo y facturar servicios de IA sin saber programar?
-                </motion.h1>
-
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 0.4 }}
-                    className="relative group mb-20"
-                >
-                    <a
-                        href="https://tally.so/r/rjPYq2"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="relative inline-flex items-center gap-2 px-8 py-4 bg-white text-black font-bold text-lg rounded-full overflow-hidden transition-transform hover:scale-105"
+                {/* Left Column: Content */}
+                <div className="flex flex-col items-center md:items-start text-center md:text-left">
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8 }}
+                        className="flex items-center justify-center md:justify-start gap-2 mb-8"
                     >
-                        <span className="relative z-10">Empezar Ahora</span>
-                        <ArrowRight className="w-5 h-5 relative z-10" />
-                        <div className="absolute inset-0 bg-primary/20 blur-xl group-hover:bg-primary/40 transition-colors" />
-                        <div className="absolute top-0 left-0 w-full h-[2px] bg-white shadow-[0_0_20px_white]" />
-                    </a>
-                </motion.div>
+                        <span className="px-3 py-1 rounded-full border border-border bg-surface/50 text-xs font-medium text-secondary uppercase tracking-wider backdrop-blur-sm">
+                            Ángel Aparicio
+                        </span>
+                    </motion.div>
 
-                {/* Social Proof Box */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.5 }}
-                    className="relative group mt-10 md:mt-16"
-                >
-                    <div className="relative z-10 flex flex-wrap items-center justify-center gap-6 md:gap-8 px-8 py-4 bg-surface/10 border border-white/10 rounded-2xl backdrop-blur-md transition-all duration-300 group-hover:border-primary/50 group-hover:shadow-[0_0_30px_rgba(138,0,255,0.15)] overflow-hidden">
-                        <div className="flex items-center gap-3">
-                            <Users className="w-5 h-5 text-primary group-hover:scale-110 transition-transform duration-300" />
-                            <span className="text-sm md:text-base font-medium text-white/90">+5,000 Estudiantes</span>
+
+                    <motion.h1
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        style={{ x, y }}
+                        className="text-3xl md:text-5xl font-bold tracking-tight leading-tight mb-8 py-4"
+                    >
+                        <div className="block">
+                            <DecryptedText
+                                text="¿Listo para automatizar"
+                                animateOn="view"
+                                revealDirection="center"
+                                speed={100}
+                                maxIterations={20}
+                                characters="ABCD1234!?"
+                                className="inline-block"
+                                parentClassName="inline-block"
+                                encryptedClassName="opacity-30"
+                            />
                         </div>
-
-                        <div className="flex items-center gap-3">
-                            <Youtube className="w-5 h-5 text-primary group-hover:scale-110 transition-transform duration-300" />
-                            <span className="text-sm md:text-base font-medium text-white/90">18k Suscriptores</span>
+                        <div className="block mt-2">
+                            <DecryptedText
+                                text="el 80% de tu trabajo"
+                                animateOn="view"
+                                revealDirection="center"
+                                speed={100}
+                                maxIterations={20}
+                                characters="ABCD1234!?"
+                                className="inline-block"
+                                parentClassName="inline-block"
+                                encryptedClassName="opacity-30"
+                            />
                         </div>
+                        <span className="text-2xl md:text-4xl block mt-4 text-transparent bg-clip-text bg-gradient-to-r from-[#b16eea] via-[#c084fc] to-[#e879f9] glow-text-gradient pb-2">
+                            y facturar servicios de IA sin saber programar?
+                        </span>
+                    </motion.h1>
 
-                        <div className="flex items-center gap-3">
-                            <Instagram className="w-5 h-5 text-primary group-hover:scale-110 transition-transform duration-300" />
-                            <span className="text-sm md:text-base font-medium text-white/90">231k Seguidores</span>
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                        className="text-lg md:text-xl text-secondary max-w-2xl mb-12"
+                    >
+                        Accede a las clases exclusivas de Ángel Aparicio. Aprende a construir sistemas inteligentes y automatizaciones reales que ponen tu negocio en piloto automático.
+                    </motion.p>
+
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.5, delay: 0.4 }}
+                        className="relative group mb-16"
+                    >
+                        {/* Replace StarBorder with LiquidButton */}
+                        <LiquidButton
+                            onClick={() => setIsModalOpen(true)}
+                            className="py-6 px-12 rounded-full text-xl"
+                            size="lg"
+                        >
+                            <span className="flex items-center gap-3">
+                                Empezar Ahora
+                                <ArrowRight className="w-6 h-6" />
+                            </span>
+                        </LiquidButton>
+                    </motion.div>
+
+                    {/* Social Proof Box */}
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.5 }}
+                        className="relative group w-full max-w-md"
+                    >
+                        <div className="relative z-10 flex flex-wrap items-center justify-center md:justify-start gap-6 px-8 py-4 bg-surface/10 border border-white/10 rounded-2xl backdrop-blur-md transition-all duration-300 group-hover:border-primary/50 group-hover:shadow-[0_0_30px_rgba(138,0,255,0.15)] overflow-hidden">
+                            <div className="flex items-center gap-3">
+                                <Users className="w-5 h-5 text-primary group-hover:scale-110 transition-transform duration-300" />
+                                <span className="text-sm md:text-base font-medium text-white/90 flex items-center">
+                                    +
+                                    <CountUp
+                                        to={5000}
+                                        duration={2.5}
+                                        className="mx-0.5"
+                                        separator=","
+                                        from={0}
+                                    />
+                                    Alumnos
+                                </span>
+                            </div>
+
+                            <div className="flex items-center gap-3">
+                                <Youtube className="w-5 h-5 text-primary group-hover:scale-110 transition-transform duration-300" />
+                                <span className="text-sm md:text-base font-medium text-white/90 flex items-center">
+                                    <CountUp
+                                        to={18000}
+                                        duration={2.5}
+                                        className="mr-1"
+                                        separator=","
+                                        from={0}
+                                    />
+                                    Subs
+                                </span>
+                            </div>
                         </div>
+                    </motion.div>
+                </div>
 
-                        {/* Interactive Shine Effect */}
-                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:animate-shimmer pointer-events-none" />
-                    </div>
-
-                    {/* Gradient Border Glow */}
-                    <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-purple-600 rounded-2xl blur opacity-0 group-hover:opacity-40 transition duration-500" />
-                </motion.div>
+                {/* Right Column: Profile Card */}
+                <div className="flex items-center justify-center w-full h-[600px] relative">
+                    <ProfileCard
+                        name="Ángel Aparicio"
+                        title="Experto en Automatizaciones e IA"
+                        handle="angel_aparicio"
+                        status="Online"
+                        contactText="Contact Me"
+                        avatarUrl="/angel-profile.png"
+                        showUserInfo={true}
+                        enableTilt={true}
+                        enableMobileTilt={false}
+                        showIcon={true}
+                        showBehindGlow={true}
+                        behindGlowColor="rgba(138, 0, 255, 0.5)"
+                        customInnerGradient="linear-gradient(145deg, #0f0518 0%, #1a0b2e 100%)"
+                    />
+                </div>
             </div>
+
+            <TallyModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                formId="rjPYq2"
+            />
         </section>
     );
 }
