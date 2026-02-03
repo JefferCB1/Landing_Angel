@@ -2,15 +2,13 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 
-type LiquidButtonProps = {
+type LiquidButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
     children: React.ReactNode;
-    className?: string;
-    onClick?: () => void;
     variant?: 'solid' | 'outline' | 'ghost'; // Compatibility
     size?: 'default' | 'icon' | 'lg';
 };
 
-const LiquidButton = ({ children, className = '', onClick, variant = 'solid', size = 'default' }: LiquidButtonProps) => {
+const LiquidButton = ({ children, className = '', onClick, variant = 'solid', size = 'default', ...props }: LiquidButtonProps) => {
     const [isHovered, setIsHovered] = useState(false);
 
     return (
@@ -23,6 +21,7 @@ const LiquidButton = ({ children, className = '', onClick, variant = 'solid', si
             onClick={onClick}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
+            {...props}
         >
             {/* Background Layer (Base) */}
             <div className="absolute inset-0 bg-primary z-0" />
