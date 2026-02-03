@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .animate-pulse-gradient {
+        animation: pulse-gradient var(--duration, 1.5s) cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    @keyframes pulse-gradient {
+        0% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.5;
+        }
+
+        100% {
+            transform: translate(-50%, -50%) scale(1.5);
+            opacity: 0;
+        }
+    }
+}
+
+@layer base {
+    :root {
+        /* Brand Defaults - Updated to Purple Scheme */
+        --color-fondo: #000000;
+        --color-superficie: #050110;
+        --color-acento: #8A00FF;
+        --color-texto-primario: #FFFFFF;
+        --color-texto-secundario: #D1D1D1;
+        --color-borde: #4B0082;
+
+        /* Campaign Specific Overrides */
+        --campana-fondo: #000000;
+    }
+}
+
+body {
+    background-color: var(--campana-fondo);
+    color: var(--color-texto-primario);
+}
+
+/* Cosmic Purple Fluid Effects */
+.cosmic-glow {
+    background: radial-gradient(circle at center, rgba(138, 0, 255, 0.2) 0%, rgba(0, 0, 0, 0) 70%);
+}
+
+.glow-text {
+    text-shadow: 0 0 20px rgba(138, 0, 255, 0.6);
+}

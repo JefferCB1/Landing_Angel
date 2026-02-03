@@ -1,0 +1,34 @@
+:root {
+  /* Colores */
+  --color-fondo: #0B1120;
+  --color-superficie: #141414;
+  --color-acento: #00E5FF;
+  --color-texto-primario: #FFFFFF;
+  --color-texto-secundario: #B5B5B5;
+  --color-borde: #2A2A2A;
+
+  /* Radios */
+  --radius-card: 18px;
+  --radius-btn: 12px;
+
+  /* Espaciado */
+  --sp-md: 12px;
+  --sp-xl: 24px;
+  
+  /* Gradiente especial para IA */
+  --gradiente-ia: linear-gradient(90deg, #00E5FF 0%, #7000FF 100%);
+}
+
+.card-curso {
+  background-color: var(--color-superficie);
+  border: 1px solid var(--color-borde);
+  border-radius: var(--radius-card);
+  padding: var(--sp-xl);
+  transition: transform 0.3s ease;
+}
+
+.card-curso:hover {
+  border-color: var(--color-acento);
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.15);
+  transform: translateY(-5px);
+}
