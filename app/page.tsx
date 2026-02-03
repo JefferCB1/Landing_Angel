@@ -1,19 +1,14 @@
 "use client";
 import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
-import { useState, MouseEvent } from "react";
+import { MouseEvent } from "react";
 import Hero from "@/components/landing/Hero";
-import Problem from "@/components/landing/Problem";
-import VideoSection from "@/components/landing/VideoSection";
+import Pillars from "@/components/landing/Pillars";
 import Testimonials from "@/components/landing/Testimonials";
-import Features from "@/components/landing/Features";
-import Authority from "@/components/landing/Authority";
 import { CTAFinal, Footer } from "@/components/landing/CTA";
-import LeadForm from "@/components/landing/LeadForm";
 
 export default function Home() {
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
-    const [isModalOpen, setIsModalOpen] = useState(false);
 
     function handleMouseMove({ clientX, clientY }: MouseEvent) {
         mouseX.set(clientX);
@@ -25,8 +20,6 @@ export default function Home() {
             className="min-h-screen flex flex-col relative group overflow-hidden bg-background"
             onMouseMove={handleMouseMove}
         >
-            <LeadForm isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
-
             {/* Global Fixed Backgrounds */}
             <div className="fixed inset-0 z-0">
                 {/* ... (rest of background code) ... */}
@@ -52,12 +45,11 @@ export default function Home() {
             {/* Content with z-index to sit above spotlight but let light through if needed */}
             <div className="relative z-10">
                 <Hero />
-                <Problem />
-                <VideoSection />
+                <div id="pillars">
+                    <Pillars />
+                </div>
                 <Testimonials />
-                <Features />
-                <Authority />
-                <CTAFinal onOpenModal={() => setIsModalOpen(true)} />
+                <CTAFinal onOpenModal={() => window.open('https://tally.so/r/rjPYq2', '_blank')} />
                 <Footer />
             </div>
         </main>

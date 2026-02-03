@@ -47,24 +47,34 @@ export default function Hero() {
                     style={{ x, y }}
                     className="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-16"
                 >
-                    Domina la IA con el mayor experto en <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8A00FF] via-[#a855f7] to-[#e879f9] glow-text-gradient">Automatización</span>
+                    ¿Listo para <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8A00FF] via-[#a855f7] to-[#e879f9] glow-text-gradient">automatizar el 80%</span> de tu trabajo y facturar servicios de IA sin saber programar?
                 </motion.h1>
 
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                    className="text-lg md:text-xl text-secondary max-w-2xl mx-auto"
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                    className="relative group mb-20"
                 >
-                    Accede a las clases exclusivas de Ángel Aparicio. Aprende a construir sistemas inteligentes y automatizaciones reales que ponen tu negocio en piloto automático.
-                </motion.p>
+                    <a
+                        href="https://tally.so/r/rjPYq2"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="relative inline-flex items-center gap-2 px-8 py-4 bg-white text-black font-bold text-lg rounded-full overflow-hidden transition-transform hover:scale-105"
+                    >
+                        <span className="relative z-10">Empezar Ahora</span>
+                        <ArrowRight className="w-5 h-5 relative z-10" />
+                        <div className="absolute inset-0 bg-primary/20 blur-xl group-hover:bg-primary/40 transition-colors" />
+                        <div className="absolute top-0 left-0 w-full h-[2px] bg-white shadow-[0_0_20px_white]" />
+                    </a>
+                </motion.div>
 
                 {/* Social Proof Box */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.5 }}
-                    className="relative group mt-32 md:mt-40"
+                    className="relative group mt-10 md:mt-16"
                 >
                     <div className="relative z-10 flex flex-wrap items-center justify-center gap-6 md:gap-8 px-8 py-4 bg-surface/10 border border-white/10 rounded-2xl backdrop-blur-md transition-all duration-300 group-hover:border-primary/50 group-hover:shadow-[0_0_30px_rgba(138,0,255,0.15)] overflow-hidden">
                         <div className="flex items-center gap-3">
@@ -89,8 +99,6 @@ export default function Hero() {
                     {/* Gradient Border Glow */}
                     <div className="absolute -inset-0.5 bg-gradient-to-r from-primary to-purple-600 rounded-2xl blur opacity-0 group-hover:opacity-40 transition duration-500" />
                 </motion.div>
-
-                {/* CTA Button Removed as per request */}
             </div>
         </section>
     );
